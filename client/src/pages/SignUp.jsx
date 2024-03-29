@@ -45,7 +45,7 @@ export default function SignUp() {
     <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6 max-w-lg mx-auto">
         <IoIosInfinite className=" self-center text-5xl fill-customGreen mr-1 pt-1  h-12"/>
-          <h2 className="self-center font-semibold">Sign up with your email and password or with google</h2>
+          <h2 className="self-center font-semibold">Sign up with your email and password or with Google</h2>
           
           <div>
           <Label value="Your username"/>
@@ -78,7 +78,7 @@ export default function SignUp() {
     </form>
       <div className="mt-5 mx-auto max-w-lg text-sm">
         <span className="text-gray-500">Have an account? </span>
-        <Link to="/sign-in" className="text-blue-500">Sign in</Link>
+        <Link to="/sign-in" className="text-blue-500">Sign In</Link>
       </div>
 
       <div>

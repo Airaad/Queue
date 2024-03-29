@@ -17,8 +17,8 @@ export default function FooterComp() {
             <div>
               <Footer.Title title="about" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Flowbite</Footer.Link>
-                <Footer.Link href="#">Tailwind CSS</Footer.Link>
+                <Footer.Link href="#">Queue</Footer.Link>
+                <Footer.Link href="#">Team</Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
