@@ -41,7 +41,7 @@ export default function SignUp() {
 
   }
   return (
-    <div className="min-h-screen mt-20  px-5 md:px-48">
+    <div className="min-h-screen mt-32   px-5 md:px-48">
     <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6 max-w-lg mx-auto">
         <IoIosInfinite className=" self-center text-5xl fill-customGreen mr-1 pt-1  h-12"/>

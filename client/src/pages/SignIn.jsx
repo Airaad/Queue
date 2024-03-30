@@ -2,11 +2,16 @@ import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { IoIosInfinite } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
+import { signInStart, signInSuccess,signInFailure } from "../redux/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
-  const [errorMessage, setErrorMessage] = useState(null); //state for errors
-  const [loading, setLoading] = useState(false); // state for loading
+  /************no need for these two states because we are using redux toolkit ************/
+  // const [errorMessage, setErrorMessage] = useState(null); //state for errors
+  // const [loading, setLoading] = useState(false); // state for loading
+  const {loading, error: errorMessage} = useSelector(state => state.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   function handleChange(event){
     setFormData({...formData, [event.target.id]: event.target.value.trim()});
@@ -15,11 +20,13 @@ export default function SignIn() {
   async function handleSubmit(event){
     event.preventDefault();
     if(!formData.email || !formData.password){
-      return setErrorMessage("Please fill out all fields");
+      // return setErrorMessage("Please fill out all fields");
+      return dispatch(signInFailure("Please fill out all the fields"));
     }
     try {
-      setLoading(true);
-      setErrorMessage(null);
+      // setLoading(true);
+      // setErrorMessage(null);
+      dispatch(signInStart());
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -27,21 +34,24 @@ export default function SignIn() {
       });
       const data = await res.json(); //waits for the respones from the server and then parses it as json
       if (data.success === false) {
-        return setErrorMessage(data.message);
+        // return setErrorMessage(data.message);
+       return dispatch(signInFailure(data.message));
       }
-      setLoading(false);
+      // setLoading(false);
       //res.ok indicates whether the HTTP response status code is in the range of 200 to 299, inclusive. This property is useful for checking whether the request was successful.
       if(res.ok){
+        dispatch(signInSuccess(data));
         navigate("/");
       }
     } catch (error) {
-      setErrorMessage(error.message); //error from the client side example if they dont have internet connection
-      setLoading(false);
+      // setErrorMessage(error.message); //error from the client side example if they dont have internet connection
+      // setLoading(false);
+      dispatch(signInFailure(error.message));
     }
 
   }
   return (
-    <div className="min-h-screen mt-20  px-5 md:px-48">
+    <div className="min-h-screen mt-32  px-5 md:px-48">
     <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6 max-w-lg mx-auto">
         <IoIosInfinite className=" self-center text-5xl fill-customGreen mr-1 pt-1  h-12"/>
