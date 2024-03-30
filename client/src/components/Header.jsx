@@ -13,7 +13,7 @@ export default function Header() {
       </Navbar.Brand>
       
       <div className="flex md:order-2">
-        <Button>Sign in</Button>
+        <Link to="/sign-in"><Button>Sign in</Button></Link>
         <Navbar.Toggle className="ml-1"/>
       </div>
       <Navbar.Collapse>

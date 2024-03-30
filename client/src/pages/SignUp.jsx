@@ -2,6 +2,7 @@ import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { IoIosInfinite } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -41,7 +42,7 @@ export default function SignUp() {
 
   }
   return (
-    <div className="min-h-screen mt-32   px-5 md:px-48">
+    <div className="min-h-screen mt-24   px-5 md:px-48">
     <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6 max-w-lg mx-auto">
         <IoIosInfinite className=" self-center text-5xl fill-customGreen mr-1 pt-1  h-12"/>
@@ -73,8 +74,9 @@ export default function SignUp() {
               )
           }
           </Button>
-      
+          <OAuth/>
         </div>
+        
     </form>
       <div className="mt-5 mx-auto max-w-lg text-sm">
         <span className="text-gray-500">Have an account? </span>
