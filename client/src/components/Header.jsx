@@ -2,11 +2,28 @@ import { Avatar, Button, Dropdown, Navbar,} from "flowbite-react";
 import { Link, useLocation } from "react-router-dom"; // it will take the user to the link address without refreshing the page
 // import { CiSearch } from "react-icons/ci";
 import { IoIosInfinite } from "react-icons/io";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import { signoutSuccess } from "../redux/user/userSlice";
 
 export default function Header() {
     const path = useLocation().pathname;
     const {currentUser} = useSelector(state => state.user);
+    const dispatch = useDispatch();
+    const handleSignOut = async () => {
+      try {
+        const res = await fetch('/api/user/signout', {
+          method: 'POST',
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          console.log(data.message);
+        } else {
+          dispatch(signoutSuccess());
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
   return (
     <Navbar fluid rounded className="mb-4">
       <Navbar.Brand href="/">
@@ -32,7 +49,7 @@ export default function Header() {
             <Dropdown.Item>My Profile</Dropdown.Item>
           </Link>
           <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
+          <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
           
           </Dropdown>
         ) :(<Link to="/sign-in"><Button gradientMonochrome="teal">Sign in</Button></Link>)
