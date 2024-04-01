@@ -19,7 +19,7 @@ export const updateUser = async (req, res, next) => {
   if (req.body.username) {
     if (req.body.username.length < 5 || req.body.username.length > 20) {
       return next(
-        errorHandler(400, 'Username must be between 7 and 20 characters')
+        errorHandler(400, 'Username must be between 5 and 20 characters')
       );
     }
     if (req.body.username.includes(' ')) {
@@ -39,13 +39,14 @@ export const updateUser = async (req, res, next) => {
       req.params.userId,
       {
         $set: {
+          name: req.body.name,
           username: req.body.username,
           email: req.body.email,
           profilePicture: req.body.profilePicture,
           password: req.body.password,
         },
       },
-      { new: true }
+      { new: true } //it will give the updated document from database
     );
     const { password, ...rest } = updatedUser._doc;
     res.status(200).json(rest);
@@ -70,6 +71,54 @@ export const deleteUser = async (req, res, next) => {
 export const signout = async(req, res, next)=>{
   try {
     res.clearCookie("access_token").status(200).json("User has been signed out")
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+export const followUnFollowUser = async(req, res, next)=>{
+  try {
+    const id = req.params.id;
+    const userToFllowOrUnfollow = await User.findById(id);
+    const currentUser = await User.findById(req.user.id);
+    if(id === req.user.id){
+      return next(errorHandler(404,"You cannot follow/unfollow yourself"));
+    }
+    if(!userToFllowOrUnfollow || !currentUser){
+      return next(errorHandler(400, "User not found"));
+    }
+
+    const isFollowing = currentUser.following.includes(id); //to check whether the user is following the given id or not
+
+    if(isFollowing){
+      //Unfollow the user
+      //Modify the current users following, and also modify the followers of userToFollowOrUnfollow
+      //we will be using pull operator of mongodb
+      await User.findByIdAndUpdate(req.user.id, {$pull: {following: id}});
+      await User.findByIdAndUpdate(id, {$pull: {followers: req.user.id}});
+      return next(errorHandler(200, "User unfollowed successfully"));
+    }else{
+      //Follow the user
+      //we will be using push operator of mongodb
+      await User.findByIdAndUpdate(req.user.id, {$push: {following: id}});
+      await User.findByIdAndUpdate(id, {$push: {followers: req.user.id}});
+      return next(errorHandler(200, "User followed successfully"));
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+export const getUserProfile = async(req, res, next)=>{
+  const {username} = req.params;
+  try {
+    const user = await User.findOne({username}).select("-password").select("-updatedAt"); //excluding password and updatedAt fields
+    if(!user){
+      return next(errorHandler(404, "User not found"));
+    }
+    res.status(200).json(user);
   } catch (error) {
     next(error);
   }

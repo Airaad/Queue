@@ -4,9 +4,9 @@ import About from "./pages/About";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Header from "./components/Header";
-import FooterComp from "./components/Footer";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import UserPage from "./pages/UserPage";
 
 export default function App() {
   return (
@@ -20,10 +20,10 @@ export default function App() {
 
         <Route element={<PrivateRoute/>}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/userpage" element={<UserPage/>} />
         </Route>
         
       </Routes>
-      <FooterComp />
     </BrowserRouter>
   );
 }

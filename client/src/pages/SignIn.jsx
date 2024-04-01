@@ -42,7 +42,7 @@ export default function SignIn() {
       //res.ok indicates whether the HTTP response status code is in the range of 200 to 299, inclusive. This property is useful for checking whether the request was successful.
       if(res.ok){
         dispatch(signInSuccess(data));
-        navigate("/");
+        navigate("/userpage");
       }
     } catch (error) {
       // setErrorMessage(error.message); //error from the client side example if they dont have internet connection

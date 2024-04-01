@@ -11,6 +11,6 @@ export const verifyToken = (req, res, next)=>{
             return next(errorHandler(401, "Unauthorized"));
         }
         req.user = user; //if the token is verified then the user is going to add to req.user
-        next();
+        next();//if this process is successfull it will run the next function
     })
 }

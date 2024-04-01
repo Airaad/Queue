@@ -4,20 +4,26 @@ import { errorHandler } from "../utils/error.js";
 import  jwt  from "jsonwebtoken"; //for user authentication
 
 export const signup = async (req, res, next)=>{
-    const{username, email, password} = req.body;
+    const{name, username, email, password} = req.body;
+    const user = await User.findOne({$or:[{email},{username}]}); // to check if the user already exists
+    if(user){
+      return next(errorHandler(400, "User already exists"));
+    }
 
     //extra security if any of the fields is empty
-    if(!username || !email || !password || username === "" || email === "" || password === ""){
+    if(!name || !username || !email || !password || name === "" || username === "" || email === "" || password === ""){
        return next(errorHandler(400, "All fields are required")); //using custom error handler because this error is created by us
     }
 
     const hashPassword = bcryptjs.hashSync(password, 10); //hashSync has await property inside it
 
     const newUser = new User({
+      //name: name
         // username: username,
         // email: email,
         // password: password,
         //in es6 if the key and the value are same we can use it directly
+        name,
         username,
         email,
         password: hashPassword,
@@ -42,11 +48,11 @@ export const signin = async(req, res, next)=>{
     try {
         const validUser = await User.findOne({email});
         if(!validUser){
-            return next(errorHandler(404, "Wrong credentials"));
+            return next(errorHandler(404, "Invalid email or password"));
         }
         const validPassword = bcryptjs.compareSync(password, validUser.password);
         if(!validPassword){
-            return next(errorHandler(400, "Wrong credentials"));
+            return next(errorHandler(400, "Invalid email or password"));
         }
 
         const token = jwt.sign({id: validUser.id}, process.env.JWT_SECRET, /*{expiresIn: "1d"}*/);
@@ -54,7 +60,7 @@ export const signin = async(req, res, next)=>{
         res
       .status(200)
       .cookie('access_token', token, {
-        httpOnly: true,
+        httpOnly: true, //This cookie cannot be accessed by the browser
       })
       .json(rest);
     } catch (error) {
