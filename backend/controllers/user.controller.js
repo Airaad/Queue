@@ -97,13 +97,13 @@ export const followUnFollowUser = async(req, res, next)=>{
       //we will be using pull operator of mongodb
       await User.findByIdAndUpdate(req.user.id, {$pull: {following: id}});
       await User.findByIdAndUpdate(id, {$pull: {followers: req.user.id}});
-      return next(errorHandler(200, "User unfollowed successfully"));
+      res.status(200).json({message: "User Unfollowed Successfully"});
     }else{
       //Follow the user
       //we will be using push operator of mongodb
       await User.findByIdAndUpdate(req.user.id, {$push: {following: id}});
       await User.findByIdAndUpdate(id, {$push: {followers: req.user.id}});
-      return next(errorHandler(200, "User followed successfully"));
+      res.status(200).json({message: "User followed Successfully"});
     }
   } catch (error) {
     next(error);
