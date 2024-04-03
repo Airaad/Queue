@@ -14,10 +14,9 @@ import {
   deleteUserSuccess,
   deleteUserFailure,
   signoutSuccess,
-  
 } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
-import { Model } from 'mongoose';
+import FooterComp from './Footer';
 
 export default function () {
     const {currentUser, error} = useSelector(state => state.user);
@@ -154,7 +153,8 @@ export default function () {
       };
 
   return (
-    <div className='mx-w-lg mx-auto my-12 w-[26rem]'>
+    <div className=' w-full'>
+    <div className='min-h-screen  my-12 w-9/12 mx-auto md:w-1/2 lg:w-1/3'>
         <h1 className='text-3xl font-semibold my-7 text-center'>My Profile</h1>
         <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
             <input type='file' accept='image/*' onChange={handleImageChange} ref={filePickerRef} hidden/>
@@ -187,6 +187,8 @@ export default function () {
             }`}/>
             </div>
             {imageFileUploadError && <Alert color="failure">{imageFileUploadError}</Alert>}
+            <TextInput id='name' type='text' placeholder='name' defaultValue={currentUser.name} onChange={handleChange}/>
+            <TextInput id='bio' type='text' placeholder='bio' defaultValue={currentUser.bio} onChange={handleChange}/>
             <TextInput id='username' type='text' placeholder='username' defaultValue={currentUser.username} onChange={handleChange}/>
             <TextInput id='email' type='email' placeholder='email' defaultValue={currentUser.email} onChange={handleChange}/>
             <TextInput id='password' type='password' placeholder='password' onChange={handleChange}/>
@@ -221,6 +223,8 @@ export default function () {
           </div>
         </Modal.Body>
         </Modal>
+        </div>
+        <FooterComp />
     </div>
   )
 }

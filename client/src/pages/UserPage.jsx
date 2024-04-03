@@ -4,7 +4,7 @@ import UserPost from '../components/UserPost'
 
 export default function UserPage() {
   return (
-    <div className='flex flex-col items-center'>
+    <div>
     <UserHeader/>
     <UserPost />
     </div>

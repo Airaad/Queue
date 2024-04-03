@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInStart, signInSuccess,signInFailure } from "../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import OAuth from "../components/OAuth";
+import FooterComp from '../components/Footer';
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -52,6 +53,7 @@ export default function SignIn() {
 
   }
   return (
+    <>
     <div className="min-h-screen mt-24  px-5 md:px-48">
     <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6 max-w-lg mx-auto">
@@ -96,6 +98,8 @@ export default function SignIn() {
       }
       </div>
     </div>
+    <FooterComp/>
+    </>
   )
 }
 

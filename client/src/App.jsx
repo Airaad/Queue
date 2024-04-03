@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import UserPage from "./pages/UserPage";
+import PeoplePage from "./pages/PeoplePage";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route element={<PrivateRoute/>}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/userpage" element={<UserPage/>} />
+        <Route path="/:username" element={<PeoplePage/>} />
         </Route>
         
       </Routes>

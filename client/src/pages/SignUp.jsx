@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IoIosInfinite } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
+import FooterComp from '../components/Footer';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -15,7 +16,7 @@ export default function SignUp() {
 
   async function handleSubmit(event){
     event.preventDefault();
-    if(!formData.username || !formData.email || !formData.password){
+    if(!formData.name || !formData.username || !formData.email || !formData.password){
       return setErrorMessage("Please fill out all fields");
     }
     try {
@@ -42,12 +43,18 @@ export default function SignUp() {
 
   }
   return (
-    <div className="min-h-screen mt-24   px-5 md:px-48">
+    <>
+    <div className="min-h-screen mt-16   px-5 md:px-48">
     <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6 max-w-lg mx-auto">
         <IoIosInfinite className=" self-center text-5xl fill-customGreen mr-1 pt-1  h-12"/>
           <h2 className="self-center font-semibold">Sign up with your email and password or with Google</h2>
           
+          <div>
+          <Label value="Your name"/>
+            <TextInput type="text" placeholder="Name" id="name" onChange={handleChange}></TextInput>
+          </div>
+
           <div>
           <Label value="Your username"/>
             <TextInput type="text" placeholder="Username" id="username" onChange={handleChange}></TextInput>
@@ -90,7 +97,9 @@ export default function SignUp() {
         )
       }
       </div>
+      
     </div>
+    <FooterComp/> </>
   )
 }
 
