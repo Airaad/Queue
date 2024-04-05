@@ -28,7 +28,7 @@ export default function Header() {
     <Navbar fluid rounded className="mb-4">
       <Navbar.Brand href="/">
         <IoIosInfinite className="text-4xl fill-customGreen mr-1 pt-1  h-9" />
-        <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">Queue</span>
+        <span className="self-center whitespace-nowrap text-2xl font-semibold">Queue</span>
       </Navbar.Brand>
       
       <div className="flex md:order-2">
@@ -46,21 +46,24 @@ export default function Header() {
             <span className="block text-sm font-medium truncate">{currentUser.email}</span>
           </Dropdown.Header>
           <Link to={"/dashboard"}>
+            <Dropdown.Item>Edit Profile</Dropdown.Item>
+          </Link>
+          <Link to={"/userpage"}>
             <Dropdown.Item>My Profile</Dropdown.Item>
           </Link>
           <Dropdown.Divider />
           <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
           
           </Dropdown>
-        ) :(<Link to="/sign-in"><Button gradientMonochrome="teal">Sign in</Button></Link>)
+        ) :(<Link to="/sign-in"><Button gradientMonochrome="cyan">Sign in</Button></Link>)
       }
         
         <Navbar.Toggle className="ml-2"/>
       </div>
       <Navbar.Collapse>
-        <Navbar.Link className="text-base" active={path === "/"} as={'div'}><Link to="/">Home</Link></Navbar.Link>
-        <Navbar.Link className="text-base" active={path === "/about"} as={'div'}><Link to="/about">About</Link></Navbar.Link>
-        <Navbar.Link className="text-base" active={path === "/contact"} as={'div'}><Link to="/contact">Contact</Link></Navbar.Link>
+        <Navbar.Link className="text-white-base " active={path === "/"} as={'div'}><Link to="/">Home</Link></Navbar.Link>
+        <Navbar.Link className="text-white-base" active={path === "/about"} as={'div'}><Link to="/about">About</Link></Navbar.Link>
+        <Navbar.Link className="text-white-base" active={path === "/contact"} as={'div'}><Link to="/contact">Contact</Link></Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

@@ -1,7 +1,37 @@
-import React from 'react'
+import { Button } from 'flowbite-react';
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 export default function UserHeader({user}) {
-    console.log(user);
+    // console.log(user); //user whos profile we are checking
+    const {currentUser} = useSelector(state => state.user); //user that is logged in
+    const [following, setFollowing] = useState(user.followers.includes(currentUser._id));
+
+    const handleClick = async ()=>{
+      try {
+        const res = await fetch(`/api/user/follow/${user._id}`,{
+          method: "POST",
+          headers: {
+            "Content-Type" : "application/json",
+          },
+        });
+        const data = await res.json();
+        if(data.success === false){
+          console.log(data.message);
+          return;
+        }
+        
+        if(following){
+          user.followers.pop();
+        }else{
+          user.followers.push(currentUser._id);
+        }
+        setFollowing(!following);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
   return (
     <div className='w-full'>
     <div className='py-12  mt-12 w-9/12 mx-auto md:w-1/2'>
@@ -16,6 +46,9 @@ export default function UserHeader({user}) {
     </div>
     <div className='py-2 mt-3'>
         <span>{user.bio}</span>
+    </div>
+    <div className='py-2 mt-3'>
+        <Button pill gradientMonochrome="teal" size="sm" onClick={handleClick}>{following?"Unfollow": "Follow"}</Button>
     </div>
     <div className='flex justify-around mt-8'>
         <span className=' text-gray-500'>{user.followers.length+" "+ "followers"}</span>

@@ -22,6 +22,7 @@ export default function PeoplePage() {
                if (data.success === false) {
                 return setErrorMessage(data.message);
               }
+                setErrorMessage(null);
                setUser(data);
             } catch (error) {
                 setErrorMessage(error.message);
