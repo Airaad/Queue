@@ -30,6 +30,19 @@ export const createPost = async(req, res, next)=>{
     }
 };
 
+export const getMyPost = async(req, res, next)=>{
+    const userId = req.user.id;
+    try {
+        const post = await Post.find({postedBy: userId}).sort({createdAt: -1});
+        if(!post){
+            next(400,"There are no post by this user");
+        }
+        res.status(200).json(post);
+    } catch (error) {
+        next(error)
+    }
+};
+
 export const getPost = async(req,res,next)=>{
     try {
         const post = await Post.findById(req.params.id);

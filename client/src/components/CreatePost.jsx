@@ -1,5 +1,6 @@
 import {getDownloadURL, getStorage, ref, uploadBytesResumable} from "firebase/storage"
 import { Alert, Button, FileInput, Modal, Textarea } from 'flowbite-react';
+import { IoIosAdd } from "react-icons/io";
 import { useState } from "react";
 import { app } from '../firebase';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -81,7 +82,7 @@ export default function CreatePost() {
     return (
         <>
         
-          <Button gradientMonochrome="teal" size="sm" pill onClick={() => setOpenModal(true)}>Add Post</Button>
+          <Button gradientMonochrome="teal" size="sm" pill onClick={() => setOpenModal(true)}>Add Post<IoIosAdd /></Button>
           <Modal show={openModal} onClose={() => setOpenModal(false)}>
             <Modal.Header>New Post</Modal.Header>
             <form onSubmit={handleSubmit}>
