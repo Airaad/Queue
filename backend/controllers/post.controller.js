@@ -114,7 +114,7 @@ export const getFeedPost = async(req, res, next)=>{
         }
         const following = user.following; //list of people current user is following
         const feedPosts = await Post.find({postedBy:{$in: following}}).sort({createdAt: -1});
-        res.status(200).json({feedPosts});
+        res.status(200).json(feedPosts);
 
 
     } catch (error) {

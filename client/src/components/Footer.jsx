@@ -6,7 +6,7 @@ import { IoIosInfinite } from "react-icons/io";
 export default function FooterComp() {
     const currentYear = new Date().getFullYear();
   return (
-    <Footer container className='border border-t-8 border-customGreen'>
+    <Footer container className='border border-t-4 border-customGreen bg-black'>
       <div className="w-full">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div className='flex items-center gap-1 mb-5'>
@@ -41,9 +41,7 @@ export default function FooterComp() {
         <div className="w-full sm:flex sm:items-center sm:justify-between">
           <Footer.Copyright href="#" by="Queue™" year={currentYear} />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-            <Footer.Icon href="#" icon={BsFacebook} />
             <Footer.Icon href="#" icon={BsInstagram} />
-            <Footer.Icon href="#" icon={BsTwitter} />
             <Footer.Icon href="#" icon={BsGithub} />
             <Footer.Icon href="#" icon={BsLinkedin} />
           </div>

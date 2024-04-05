@@ -51,25 +51,25 @@ export default function SignUp() {
           <h2 className="self-center font-semibold">Sign up with your email and password or with Google</h2>
           
           <div>
-          <Label value="Your name"/>
+          <Label color='white' value="Your name"/>
             <TextInput type="text" placeholder="Name" id="name" onChange={handleChange}></TextInput>
           </div>
 
           <div>
-          <Label value="Your username"/>
+          <Label color='white' value="Your username"/>
             <TextInput type="text" placeholder="Username" id="username" onChange={handleChange}></TextInput>
           </div>
 
           <div>
-            <Label value="Your email"/>
+            <Label color='white' value="Your email"/>
             <TextInput type="email" placeholder="name@company.com" id="email" onChange={handleChange}></TextInput>
           </div>
 
           <div>
-          <Label value="Your password"/>
+          <Label color='white' value="Your password"/>
             <TextInput type="password" placeholder="Password" id="password" onChange={handleChange}></TextInput>
           </div>
-          <Button type="submit" disabled={loading}>
+          <Button type="submit" disabled={loading} gradientMonochrome="teal">
           {
             loading ? (
                 <>

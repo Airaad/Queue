@@ -57,19 +57,19 @@ export default function SignIn() {
     <div className="min-h-screen mt-24  px-5 md:px-48">
     <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6 max-w-lg mx-auto">
-        <IoIosInfinite className=" self-center text-5xl fill-customGreen mr-1 pt-1  h-12"/>
+        <IoIosInfinite className=" self-center text-5xl fill-customGreen mr-1 pt-1  h-14"/>
           <h2 className="self-center font-semibold">Sign in with your email and password or with Google</h2>
 
           <div>
-            <Label value="Your email"/>
+            <Label color='white' value="Your email"/>
             <TextInput type="email" placeholder="name@company.com" id="email" onChange={handleChange}></TextInput>
           </div>
 
           <div>
-          <Label value="Your password"/>
+          <Label color='white' value="Your password"/>
             <TextInput type="password" placeholder="Password" id="password" onChange={handleChange}></TextInput>
           </div>
-          <Button type="submit" disabled={loading}>
+          <Button type="submit" disabled={loading} gradientMonochrome="teal">
           {
             loading ? (
                 <>

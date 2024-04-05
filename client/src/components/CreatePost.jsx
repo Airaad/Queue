@@ -81,7 +81,7 @@ export default function CreatePost() {
     return (
         <>
         
-          <Button size="sm" pill onClick={() => setOpenModal(true)}>Add Post</Button>
+          <Button gradientMonochrome="teal" size="sm" pill onClick={() => setOpenModal(true)}>Add Post</Button>
           <Modal show={openModal} onClose={() => setOpenModal(false)}>
             <Modal.Header>New Post</Modal.Header>
             <form onSubmit={handleSubmit}>
@@ -101,7 +101,7 @@ export default function CreatePost() {
               {formData.img && (<img src={formData.img} alt="upload" className="w-full h-72  object-scale-down"/>)}
             </Modal.Body>
             <Modal.Footer>
-              <Button type='submit'>Save</Button>
+              <Button gradientMonochrome='teal' type='submit'>Save</Button>
               
               {
                 saveError && <Alert className="mt-5" color='failure'>{saveError}</Alert>

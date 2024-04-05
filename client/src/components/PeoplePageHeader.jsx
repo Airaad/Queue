@@ -34,7 +34,7 @@ export default function UserHeader({user}) {
 
   return (
     <div className='w-full'>
-    <div className='py-12  mt-12 w-9/12 mx-auto md:w-1/2'>
+    <div className='py-12  mt-12 w-9/12 mx-auto md:w-1/2 lg:1/4'>
     <div className='flex justify-between items-center'>
         <div>
         <h1 className=' font-bold text-4xl mb-1'>{user.name}</h1>
@@ -44,16 +44,21 @@ export default function UserHeader({user}) {
         <img src={user.profilePicture} alt='user' className="rounded-full w-full h-full object-cover border-2 border-[lightgray]"/>
         </div>
     </div>
-    <div className='py-2 mt-3'>
-        <span>{user.bio}</span>
+    <div className='mt-2'>
+        <span className='font-thin'>{user.bio}</span>
     </div>
-    <div className='py-2 mt-3'>
-        <Button pill gradientMonochrome="teal" size="sm" onClick={handleClick}>{following?"Unfollow": "Follow"}</Button>
-    </div>
-    <div className='flex justify-around mt-8'>
+
+    <div className='flex justify-center gap-32 mt-8'>
         <span className=' text-gray-500'>{user.followers.length+" "+ "followers"}</span>
         <span className=' text-gray-500'>{user.following.length+" "+ "following"}</span>
     </div>
+
+    <div className='h-[1px] bg-slate-500 my-5' />
+
+    <div className='py-2 mt-3 flex justify-center'>
+        <Button pill gradientMonochrome="teal" size="sm" onClick={handleClick}>{following?"Unfollow": "Follow"}</Button>
+    </div>
+    
     </div>
     </div>
   )
