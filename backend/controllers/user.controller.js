@@ -1,6 +1,7 @@
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from '../utils/error.js';
 import User from '../models/user.model.js';
+import mongoose from "mongoose";
 
 export const test = (req, res) => {
   res.json({ message: 'API is working!' });
@@ -113,9 +114,19 @@ export const followUnFollowUser = async(req, res, next)=>{
 
 
 export const getUserProfile = async(req, res, next)=>{
-  const {username} = req.params;
+  const {query} = req.params; //query can be either username or _id
   try {
-    const user = await User.findOne({username}).select("-password").select("-updatedAt"); //excluding password and updatedAt fields
+    let user;
+
+    //query is userId
+    if(mongoose.Types.ObjectId.isValid(query)){
+      user = await User.findOne({_id: query}).select("-password").select("-updatedAt");
+    }else{
+      //query is username
+      user = await User.findOne({username: query}).select("-password").select("-updatedAt"); //excluding password and updatedAt fields
+
+    }
+
     if(!user){
       return next(errorHandler(404, "User not found"));
     }

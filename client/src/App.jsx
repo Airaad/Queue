@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import UserPage from "./pages/UserPage";
 import PeoplePage from "./pages/PeoplePage";
+import FeedPage from "./pages/FeedPage";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/userpage" element={<UserPage/>} />
         <Route path="/:username" element={<PeoplePage/>} />
+        <Route path="/feed" element={<FeedPage/>} />
         </Route>
         
       </Routes>

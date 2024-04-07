@@ -83,7 +83,7 @@ export const likeUnlikePost = async(req, res, next)=>{
        if(userLikePost){
         //user already liked the post. so unlike it
         await Post.updateOne({_id:postId}, {$pull: {likes: userId}});
-        next(errorHandler(200,"Post unliked sucessfully"));
+        res.status(200).json({message: "Post unliked succesfully"});
        }else{
         //like the post
         await Post.updateOne({_id:postId}, {$push: {likes: userId}});

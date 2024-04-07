@@ -1,6 +1,7 @@
 import React from 'react'
 import {Dropdown} from "flowbite-react";
 import { SlOptions } from "react-icons/sl";
+import ActionPost from './ActionPost';
 
 export default function PostComponent({user, post}) {
   return (
@@ -31,6 +32,10 @@ export default function PostComponent({user, post}) {
           {post.img? <img src={post.img} alt='user' className="w-full h-full object-cover border-2"/>:null}
           </div>
         </div>
+        <div className=' ml-14'>
+        <ActionPost post={post}/>
+        </div>
+        
       </div>
   )
 }
