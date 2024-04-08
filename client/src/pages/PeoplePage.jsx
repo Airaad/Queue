@@ -3,6 +3,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import PeoplePageHeader from '../components/PeoplePageHeader';
 import { Alert } from 'flowbite-react';
 import { useSelector } from 'react-redux'
+import PeoplePagePost from '../components/PeoplePagePost';
 
 export default function PeoplePage() {
     const {currentUser} = useSelector(state => state.user);
@@ -32,11 +33,12 @@ export default function PeoplePage() {
     },[username]);
  
     if(!user){
-        return <div><Alert color="failure">{errorMessage}</Alert></div>;
+        return <div className='w-1/2 mx-auto mt-80'><Alert color="failure"><span>{errorMessage}</span></Alert></div>;
     } 
   return (
     <>
         <PeoplePageHeader user={user}/>
+        <PeoplePagePost user={user}/>
     </>
   )
 }

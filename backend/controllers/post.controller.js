@@ -43,6 +43,21 @@ export const getMyPost = async(req, res, next)=>{
     }
 };
 
+export const getUserPost = async(req,res,next)=>{
+    const {username} = req.params;
+    try {
+        const user = await User.findOne({ username });
+        if(!user) {
+            next(errorHandler(404, "User not found"));
+        }
+        const posts = await Post.find({postedBy: user._id}).sort({createdAt:-1});
+        res.status(200).json(posts);
+    } catch (error) {
+        next(error);
+        
+    }
+};
+
 export const getPost = async(req,res,next)=>{
     try {
         const post = await Post.findById(req.params.id);
