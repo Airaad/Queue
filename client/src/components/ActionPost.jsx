@@ -111,7 +111,7 @@ export default function ActionPost({post:post_}) {
             <Modal.Header>Add comment</Modal.Header>
             
             <Modal.Body>
-              <TextInput placeholder='comment...'  id='comment' autoComplete="off" shadow required onChange={(e)=>{setComment(e.target.value)}}/>
+              <TextInput placeholder='comment...'  id='comment' autoComplete="off" shadow required onChange={(e)=>{setComment(e.target.value)}}/>   
             </Modal.Body>
             <Modal.Footer>
               <Button gradientMonochrome='teal' type='submit' onClick={handleComment}>Add</Button>

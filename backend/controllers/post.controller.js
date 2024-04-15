@@ -64,7 +64,7 @@ export const getPost = async(req,res,next)=>{
         if(!post){
             return next(errorHandler(404, "Post not found"));
         }
-        res.status(200).json({post});
+        res.status(200).json(post);
     } catch (error) {
         next(error);
     }
@@ -114,8 +114,14 @@ export const replyToPost = async (req, res, next)=>{
         const {text} = req.body;
         const postId = req.params.id;
         const userId = req.user.id;
-        const userProfilePicture = req.user.profilePicture;
-        const username = req.user.username;
+        
+        const user = await User.findOne({_id: userId}).select("-password").select("-updatedAt");
+        const userProfilePicture = user.profilePicture;
+        const username = user.username;
+
+        if(!user){
+            next(errorHandler(400, "user not found"));
+        }
 
         if(!text) {
             next(errorHandler(404, "Text field is required"));
