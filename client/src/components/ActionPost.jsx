@@ -81,6 +81,7 @@ export default function ActionPost({post:post_}) {
                   strokeWidth='2'
               ></path>
           </svg>
+          <span className='text-gray-600'>{post.likes.length +" "+ "likes"}</span>
 
           <svg
               aria-label='Comment'
@@ -101,12 +102,10 @@ export default function ActionPost({post:post_}) {
                   strokeWidth='2'
               ></path>
           </svg>
+          <span className='text-gray-600'>{post.replies.length+" "+ "comments"}</span>
         </div>
 
-        <div className='flex gap-4'>
-            <span className='text-gray-600'>{post.likes.length +" "+ "likes"}</span>
-            <span className='text-gray-600'>{post.replies.length+" "+ "comments"}</span>
-        </div>
+       
           <Modal show={openModal} onClose={() => setOpenModal(false)}>
             <Modal.Header>Add comment</Modal.Header>
             

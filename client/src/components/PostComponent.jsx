@@ -63,6 +63,9 @@ export default function PostComponent({user, post}) {
           </div>
         </div>
         </Link>
+        <div className='my-4 ml-14'>
+          <span className='font-thin text-gray-500'>{post.createdAt.slice(0,10)}</span>
+        </div>
         <div className=' ml-14'>
         <ActionPost post={post}/>
         </div>

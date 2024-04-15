@@ -25,7 +25,7 @@ export default function Header() {
       }
     };
   return (
-    <Navbar fluid rounded className="mb-4 bg-black">
+    <Navbar fluid rounded className="mb-4 bg-transparent">
       <Navbar.Brand href= {currentUser ? "/feed" : "/"}>
         <IoIosInfinite className="text-4xl fill-customGreen mr-1 pt-1  h-9" />
         <span className="self-center whitespace-nowrap text-2xl font-semibold">Queue</span>

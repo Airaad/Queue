@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
         colors: {
-          customGreen: 'rgb(14 116 144)', // Custom website color
+          customGreen: '#00d4ff', // Custom website color
         },
     },
   },

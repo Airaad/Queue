@@ -31,8 +31,8 @@ export default function FeedPost({post, postedBy}) {
     }
 
     return (
-      <div className='w-9/12 mx-auto md:w-1/2'>
-      <div className=' border-dotted border-2 border-teal-500 p-5 my-10'>
+      <div className='w-10/12 mx-auto md:w-1/2'>
+      <div className=' border-dotted my-10'>
       <Link to={toValue}>
           <div className=' flex justify-between items-center'>
           <div className='flex gap-3 items-center'>
@@ -53,6 +53,9 @@ export default function FeedPost({post, postedBy}) {
             </div>
           </div>
           </Link>
+          <div className='my-4'>
+          <span className='font-thin text-gray-500'>{post.createdAt.slice(0,10)}</span>
+          </div>
           <div>
           <ActionPost post={post}/>
           </div>
@@ -60,7 +63,7 @@ export default function FeedPost({post, postedBy}) {
             
                 
         </div>
-        <div className='h-[1px] w-full mx-auto bg-slate-500 my-5' />
+        <div className='h-[1px] w-full mx-auto bg-slate-500 my-3' />
         </div>
     )
   }
