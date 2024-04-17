@@ -82,7 +82,7 @@ export default function CreatePost() {
     return (
         <>
         
-          <Button gradientMonochrome="teal" size="sm" pill onClick={() => setOpenModal(true)}>Add Post<IoIosAdd /></Button>
+          <Button gradientMonochrome="cyan" size="sm" pill onClick={() => setOpenModal(true)}>Add Post<IoIosAdd /></Button>
           <Modal show={openModal} onClose={() => setOpenModal(false)}>
             <Modal.Header>New Post</Modal.Header>
             <form onSubmit={handleSubmit}>

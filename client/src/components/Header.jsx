@@ -61,9 +61,9 @@ export default function Header() {
         <Navbar.Toggle className="ml-2"/>
       </div>
       <Navbar.Collapse>
-        <Navbar.Link className="text-white-base " active={path === "/"} as={'div'}><Link to={currentUser ? "/userpage" : "/"}>Home</Link></Navbar.Link>
-        <Navbar.Link className="text-white-base" active={path === "/about"} as={'div'}><Link to="/about">About</Link></Navbar.Link>
-        <Navbar.Link className="text-white-base" active={path === "/contact"} as={'div'}><Link to="/contact">Contact</Link></Navbar.Link>
+        <Navbar.Link className="text-white-base  hover:bg-black" active={path === "/"} as={'div'}><Link to={currentUser ? "/feed" : "/"}>Home</Link></Navbar.Link>
+        <Navbar.Link className="text-white-base hover:bg-black" active={path === "/about"} as={'div'}><Link to="/about">About</Link></Navbar.Link>
+        <Navbar.Link className="text-white-base hover:bg-black" active={path === "/contact"} as={'div'}><Link to="/contact">Contact</Link></Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

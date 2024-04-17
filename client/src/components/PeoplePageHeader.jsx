@@ -41,7 +41,7 @@ export default function UserHeader({user}) {
         <span className='font-medium'>{user.username}</span>
         </div>
         <div className='w-28 h-28 self-center'>
-        <img src={user.profilePicture} alt='user' className="rounded-full w-full h-full object-cover border-2 border-[lightgray]"/>
+        <img src={user.profilePicture} alt='user' className="rounded-full w-full h-full object-cover border-2 border-teal-500"/>
         </div>
     </div>
     <div className='mt-2'>
@@ -56,7 +56,7 @@ export default function UserHeader({user}) {
     <div className='h-[1px] bg-slate-500 my-5' />
 
     <div className='py-2 mt-3 flex justify-center'>
-        <Button pill gradientMonochrome="teal" size="sm" onClick={handleClick}>{following?"Unfollow": "Follow"}</Button>
+        <Button pill gradientMonochrome="cyan" size="sm" onClick={handleClick}>{following?"Unfollow": "Follow"}</Button>
     </div>
     
     </div>

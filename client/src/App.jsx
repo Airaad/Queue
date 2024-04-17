@@ -10,6 +10,7 @@ import UserPage from "./pages/UserPage";
 import PeoplePage from "./pages/PeoplePage";
 import FeedPage from "./pages/FeedPage";
 import PostPage from "./pages/PostPage";
+import Contact from "./pages/Contact";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
 

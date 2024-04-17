@@ -192,7 +192,7 @@ export default function () {
             <TextInput id='username' type='text' placeholder='username' defaultValue={currentUser.username} onChange={handleChange}/>
             <TextInput id='email' type='email' placeholder='email' defaultValue={currentUser.email} onChange={handleChange}/>
             <TextInput id='password' type='password' placeholder='password' onChange={handleChange}/>
-            <Button type='submit' gradientMonochrome="teal">Update</Button>
+            <Button type='submit' gradientMonochrome="cyan">Update</Button>
         </form>
         
         <div className='text-red-500 flex justify-between mt-3'>

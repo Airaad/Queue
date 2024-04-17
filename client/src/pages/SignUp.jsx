@@ -69,7 +69,7 @@ export default function SignUp() {
           <Label color='white' value="Your password"/>
             <TextInput type="password" placeholder="Password" id="password" onChange={handleChange}></TextInput>
           </div>
-          <Button type="submit" disabled={loading} gradientMonochrome="teal">
+          <Button type="submit" disabled={loading} gradientMonochrome="cyan">
           {
             loading ? (
                 <>
