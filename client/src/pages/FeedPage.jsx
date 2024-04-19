@@ -31,9 +31,9 @@ export default function FeedPage() {
 
   return (
    <div className='mt-24'>
-    { posts.length !=0 ? posts.map((post)=>{
+    {posts.length !=0 ? posts.map((post)=>{
         return <FeedPost key={post._id} post = {post} postedBy = {post.postedBy}/>
-    }): <section className='flex min-h-screen w-full justify-center items-center'><h1 className='text-2xl'>Follow someone to see their posts</h1></section>}
+    }): <section className='flex min-h-screen w-[70%] justify-center items-center text-center mx-auto'><h1 className='text-2xl'>No feed to fetch. Try by following someone with posts</h1></section>}
     </div>
    
   )

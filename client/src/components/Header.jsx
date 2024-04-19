@@ -45,15 +45,25 @@ export default function Header() {
       </Navbar.Brand>
 
     {currentUser ? (
+      <div className="flex">
       <form onSubmit={handleSearch}>
       <TextInput
       placeholder="search for user.."
       rightIcon={CiSearch}
       shadow
       onChange={handleChange}
-      className="md:w-80">
+      className="md:w-80 border-2 border-blue-500 rounded-xl">
       </TextInput>
       </form>
+      <Dropdown label="" inline>
+      <Dropdown.Header>
+          <span>Suggested users to follow</span>
+      </Dropdown.Header>
+      <Link to='/airaad'><Dropdown.Item>airaad</Dropdown.Item></Link>
+      <Link to='/sarim'><Dropdown.Item>sarim</Dropdown.Item></Link>
+      <Link to='/alex'><Dropdown.Item>alex</Dropdown.Item></Link>
+      </Dropdown>
+    </div>
     ): null}
       
 

@@ -20,7 +20,7 @@ export default function Home() {
       
      <Link to='/sign-up'> <Button className='my-10' gradientMonochrome="cyan" pill>Get Started</Button> </Link>
 
-    <div className='my-16'>
+    <div className='my-5'>
      <div className='flex flex-col gap-16 p-10 w-[80%] text-center mx-auto md:flex-row md:justify-between'>
       <div className='flex flex-col gap-4 md:w-[80%]'>
         <FaUserAlt className='mx-auto text-4xl'/>
