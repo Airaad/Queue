@@ -1,14 +1,18 @@
-import { Avatar, Button, Dropdown, Navbar,} from "flowbite-react";
-import { Link, useLocation } from "react-router-dom"; // it will take the user to the link address without refreshing the page
-// import { CiSearch } from "react-icons/ci";
+import { Avatar, Button, Dropdown, Navbar, TextInput,} from "flowbite-react";
+import { Link, useLocation} from "react-router-dom"; // it will take the user to the link address without refreshing the page
+import { CiSearch } from "react-icons/ci";
 import { IoIosInfinite } from "react-icons/io";
 import {useDispatch, useSelector} from "react-redux";
 import { signoutSuccess } from "../redux/user/userSlice";
+import { useState } from "react";
+
 
 export default function Header() {
     const path = useLocation().pathname;
     const {currentUser} = useSelector(state => state.user);
     const dispatch = useDispatch();
+    const [searchTerm, setSearchTerm] = useState('');
+
     const handleSignOut = async () => {
       try {
         const res = await fetch('/api/user/signout', {
@@ -24,12 +28,35 @@ export default function Header() {
         console.log(error.message);
       }
     };
+
+    function handleChange(event){
+      const username = event.target.value;
+      setSearchTerm(username);
+    }
+    const handleSearch = async (event)=>{
+      event.preventDefault();
+      window.location.href = `/${searchTerm}`;
+    }
   return (
     <Navbar fluid rounded className="mb-4 bg-transparent">
       <Navbar.Brand href= {currentUser ? "/feed" : "/"}>
         <IoIosInfinite className="text-4xl fill-customGreen mr-1 pt-1  h-9" />
         <span className="self-center whitespace-nowrap text-2xl font-semibold">Queue</span>
       </Navbar.Brand>
+
+    {currentUser ? (
+      <form onSubmit={handleSearch}>
+      <TextInput
+      placeholder="search for user.."
+      rightIcon={CiSearch}
+      shadow
+      onChange={handleChange}
+      className="md:w-80">
+      </TextInput>
+      </form>
+    ): null}
+      
+
       
       <div className="flex md:order-2">
       {

@@ -11,6 +11,8 @@ import PeoplePage from "./pages/PeoplePage";
 import FeedPage from "./pages/FeedPage";
 import PostPage from "./pages/PostPage";
 import Contact from "./pages/Contact";
+import Followers from "./pages/Followers";
+import Following from "./pages/Following";
 
 export default function App() {
   return (
@@ -27,9 +29,10 @@ export default function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/userpage" element={<UserPage/>} />
         <Route path="/:username" element={<PeoplePage/>} />
-        <Route path="/feed/:username" element={<PeoplePage/>}/>
         <Route path="/feed" element={<FeedPage/>} />
         <Route path="/:username/post/:pid" element={<PostPage/>}/>
+        <Route path="/followers" element={<Followers/>} />
+        <Route path="/following" element={<Following/>} />
         </Route>
         
       </Routes>

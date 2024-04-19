@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 export default function FeedPost({post, postedBy}) {
     const [user, setUser] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
-    const [toValue, setToValue] = useState("");
     useEffect(() => {
 		const getUser = async () => {
 			try {
@@ -16,7 +15,6 @@ export default function FeedPost({post, postedBy}) {
 					return;
 				}
 				setUser(data);
-        setToValue(data.username);
 			} catch (error) {
 				setErrorMessage(error);
 				setUser(null);
@@ -33,7 +31,7 @@ export default function FeedPost({post, postedBy}) {
     return (
       <div className='w-10/12 mx-auto md:w-1/2'>
       <div className=' border-dotted my-10'>
-      <Link to={toValue}>
+      <Link to={`/${user.username}`}>
           <div className=' flex justify-between items-center'>
           <div className='flex gap-3 items-center'>
               <div className='w-10 h-10 self-center'>

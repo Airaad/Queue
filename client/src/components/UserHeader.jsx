@@ -50,8 +50,8 @@ if(!currentUser){
     </div>
 
     <div className='flex justify-center gap-32 mt-8'>
-        <span className=' text-gray-500'>{currentUser.followers.length +" "+ "followers"}</span>
-        <span className=' text-gray-500'>{currentUser.following.length +" "+ "following"}</span>
+       <Link to='/followers'> <span className=' text-gray-500'>{currentUser.followers.length +" "+ "followers"}</span></Link>
+        <Link to='/following'><span className=' text-gray-500'>{currentUser.following.length +" "+ "following"}</span></Link>
     </div>
 
     <div className='h-[1px] bg-slate-500 my-5' />

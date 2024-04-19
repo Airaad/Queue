@@ -24,7 +24,6 @@ export default function PostComponent({user, post}) {
       if(data.success === false){
         console.log(data.message);
       }
-      console.log(data);
       setShowModal(false);
       window.location.reload();
     } catch (error) {

@@ -61,7 +61,7 @@ export default function () {
           },
           (error) => {
             setImageFileUploadError(
-              'Could not upload image (File must be less than 2MB)'
+              'Could not upload image (File must be less than 5MB)'
             );
             setImageFileUploadProgress(null);
             setImageFile(null);
