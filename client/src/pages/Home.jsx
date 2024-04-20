@@ -51,11 +51,11 @@ export default function Home() {
     </div>
     <div className="h-72 sm:h-[30rem] w-[90%]">
       <Carousel slideInterval={5000}>
-        <img className='w-full h-full object-scale-down' src='src/assets/img2.jpg' />
-        <img className='w-full h-full object-scale-down' src='src/assets/img3.jpg' />
-        <img className='w-full h-full object-scale-down' src='src/assets/img4.jpg' />
-        <img className='w-full h-full object-scale-down' src='src/assets/img5.jpg' />
-        <img className='w-full h-full object-scale-down' src='src/assets/img6.jpg' />
+        <img className='w-full h-full object-scale-down' src='/images/img2.jpg' />
+        <img className='w-full h-full object-scale-down' src='/images/img3.jpg' />
+        <img className='w-full h-full object-scale-down' src='/images/img4.jpg' />
+        <img className='w-full h-full object-scale-down' src='/images/img5.jpg' />
+        <img className='w-full h-full object-scale-down' src='/images/img6.jpg' />
         
       </Carousel>
     </div>
