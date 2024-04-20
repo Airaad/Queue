@@ -20,6 +20,8 @@ export default function Home() {
       
      <Link to='/sign-up'> <Button className='my-10' gradientMonochrome="cyan" pill>Get Started</Button> </Link>
 
+     <div className='h-[1px] w-1/2 mx-auto bg-slate-500 my-5' />
+
     <div className='my-5'>
      <div className='flex flex-col gap-16 p-10 w-[80%] text-center mx-auto md:flex-row md:justify-between'>
       <div className='flex flex-col gap-4 md:w-[80%]'>
@@ -42,6 +44,7 @@ export default function Home() {
      </div>
      </div>
 
+     <div className='h-[1px] w-1/2 mx-auto bg-slate-500 my-5' />
 
     <div className='my-5 text-center'>
       <p className='text-lg sm:text-2xl'>Connecting People, Sharing Moments</p>

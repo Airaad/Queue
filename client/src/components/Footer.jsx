@@ -1,6 +1,6 @@
 import { Footer } from 'flowbite-react'
 import React from 'react'
-import {BsGithub, BsInstagram, BsLinkedin } from "react-icons/bs";
+import {BsGithub, BsLinkedin } from "react-icons/bs";
 import { IoIosInfinite } from "react-icons/io";
 
 export default function FooterComp() {
@@ -41,7 +41,6 @@ export default function FooterComp() {
         <div className="w-full sm:flex sm:items-center sm:justify-between">
           <Footer.Copyright href="/" by="Queue™" year={currentYear} />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-            <Footer.Icon href="#" icon={BsInstagram} />
             <Footer.Icon href="https://github.com/Airaad" icon={BsGithub} />
             <Footer.Icon href="https://www.linkedin.com/in/sheikh-airaad-314889291" icon={BsLinkedin} />
           </div>
