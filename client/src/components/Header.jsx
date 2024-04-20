@@ -44,29 +44,6 @@ export default function Header() {
         <span className="self-center whitespace-nowrap text-2xl font-semibold">Queue</span>
       </Navbar.Brand>
 
-    {currentUser ? (
-      <div className="flex">
-      <form onSubmit={handleSearch}>
-      <TextInput
-      placeholder="search for user.."
-      rightIcon={CiSearch}
-      shadow
-      onChange={handleChange}
-      className="md:w-80 border-2 border-blue-500 rounded-xl">
-      </TextInput>
-      </form>
-      <Dropdown label="" inline>
-      <Dropdown.Header>
-          <span>Suggested users to follow</span>
-      </Dropdown.Header>
-      <Link to='/airaad'><Dropdown.Item>airaad</Dropdown.Item></Link>
-      <Link to='/sarim'><Dropdown.Item>sarim</Dropdown.Item></Link>
-      <Link to='/alex'><Dropdown.Item>alex</Dropdown.Item></Link>
-      </Dropdown>
-    </div>
-    ): null}
-      
-
       
       <div className="flex md:order-2">
       {
@@ -98,6 +75,29 @@ export default function Header() {
         <Navbar.Toggle className="ml-2"/>
       </div>
       <Navbar.Collapse>
+
+      {currentUser ? (
+      <div className="flex">
+      <form onSubmit={handleSearch}>
+      <TextInput
+      placeholder="search for user.."
+      rightIcon={CiSearch}
+      shadow
+      onChange={handleChange}
+      className=" md:w-80 border-2 border-blue-500 rounded-xl">
+      </TextInput>
+      </form>
+      <Dropdown label="" inline>
+      <Dropdown.Header>
+          <span>Suggested users to follow</span>
+      </Dropdown.Header>
+      <Link to='/airaad'><Dropdown.Item>airaad</Dropdown.Item></Link>
+      <Link to='/sarim'><Dropdown.Item>sarim</Dropdown.Item></Link>
+      <Link to='/alex'><Dropdown.Item>alex</Dropdown.Item></Link>
+      </Dropdown>
+    </div>
+    ): null}
+    
         <Navbar.Link className="text-white-base  hover:bg-black" active={path === "/"} as={'div'}><Link to={currentUser ? "/feed" : "/"}>Home</Link></Navbar.Link>
         <Navbar.Link className="text-white-base hover:bg-black" active={path === "/about"} as={'div'}><Link to="/about">About</Link></Navbar.Link>
         <Navbar.Link className="text-white-base hover:bg-black" active={path === "/contact"} as={'div'}><Link to="/contact">Contact</Link></Navbar.Link>
